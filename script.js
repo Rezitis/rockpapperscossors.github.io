@@ -29,4 +29,26 @@ function playRound(playerChoice) {
     ) {
         result = 'You win!';
         playerScore++;
+    } else {
+        result = 'You lose!';
+        aiScore++;
     }
+
+    updateScoreboard();
+    showResult(result, playerChoice, aiChoice);
+}
+
+function getAIChoice(playerChoice) {
+    if (playerChoice === 'rock') return 'paper';
+    if (playerChoice === 'paper') return 'scissors';
+    if (playerChoice === 'scissors') return 'rock';
+}
+
+function updateScoreboard() {
+    playerScoreElem.textContent = `Player: ${playerScore}`;
+    aiScoreElem.textContent = `AI: ${aiScore}`;
+}
+
+function showResult(result, playerChoice, aiChoice) {
+    resultElem.textContent = `You chose ${playerChoice}, AI chose ${aiChoice}. ${result}`;
+}
